@@ -1,7 +1,7 @@
 import makeStore from './src/store';
 import startServer from './src/server';
 
-import entries from '/entries.json'
+import entries from './entries.json'
 
 const store = makeStore();
 startServer(store);

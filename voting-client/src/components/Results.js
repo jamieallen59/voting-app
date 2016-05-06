@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import Winner from './Winner';
+import { connect } from 'react-redux';
 import shallowCompare from 'react-addons-shallow-compare';
+import * as actionCreators from '../action_creators';
 
-class Results extends Component {
+function mapStateToProps(state) {
+  return {
+    pair: state.getIn(['vote', 'pair']),
+    tally: state.getIn(['vote', 'tally']),
+    winner: state.get('winner')
+  }
+}
+
+export class Results extends Component {
 	constructor() {
 		super();
 		this.getPair = this.getPair.bind(this);
@@ -49,5 +59,10 @@ class Results extends Component {
 
 	}
 }
-
-module.exports = Results;
+export const ResultsContainer = connect(
+	mapStateToProps,
+	actionCreators
+)(Results);
+// export const Results = Results;
+// module.exports = Results;
+// module.exports = ResultsContainer;

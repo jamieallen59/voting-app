@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
-
+import { connect } from 'react-redux';
 import Winner from './Winner'
 import Vote from './Vote';
+import * as actionCreators from '../action_creators';
 
-class Voting extends Component {
+function mapStateToProps(state) {
+	return {
+		pair: state.getIn(['vote', 'pair']),
+		hasVoted: state.get('hasVoted'),
+		winner: state.get('winner')
+	}
+}
+
+export class Voting extends Component {
 	// https://facebook.github.io/react/docs/shallow-compare.html
 	shouldComponentUpdate(nextProps, nextState) {
 		return shallowCompare(this, nextProps, nextState);
@@ -22,4 +31,10 @@ class Voting extends Component {
 	}
 }
 
-module.exports = Voting;
+export const VotingContainer = connect(
+	mapStateToProps,
+	actionCreators
+)(Voting);
+
+// module.exports = Voting;
+// module.exports = VotingContainer;

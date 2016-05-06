@@ -45,10 +45,10 @@ class Vote extends Component {
 		)
 	}
 }
-
-Vote.propTypes = {
-	pair: PropTypes.object.isRequired,
-	hasVoted: PropTypes.string.isRequired
-}
+//
+// Vote.propTypes = {
+// 	pair: PropTypes.object.isRequired,
+// 	hasVoted: PropTypes.string.isRequired
+// }
 
 module.exports = Vote
